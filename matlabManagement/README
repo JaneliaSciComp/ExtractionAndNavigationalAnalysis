@@ -1,0 +1,38 @@
+This directory contains files for managing Matlab source code and binaries for
+the Larval Olympiad Extraction and Navigational Analysis pipeline.
+
+But to date (12/17/2013) it is not fully implemented.  This is an intentional
+choice, since making this operational is currently a relatively low priority.
+
+In principle it should be capable of downloading the latest samuellab source code,
+checking to see whether code changes have been applied, and rebuilding all the binaries
+[ recommendation: change them all at once, irrespective of whether only a few binaries
+have been affected ].  Or perhaps it would be more prudent just to warn the relevant folks
+if recent source code changes might merit rebuilding the binaries.
+
+
+Unfortunately, the github-checkout (tarball) mechanism used here doesn't preserve
+timestamps, which makes it more difficult to make informed decisions regarding
+whether a software rebuild is justified.
+
+
+Here are the current files:
+* fdep_21jun2010.zip - a third-party dependency analysis tool for Matlab.  The canonical
+  "depfun" function requires the Control Toolbox, but this solution requires no
+  toolboxes
+* doSamuelLabGithubCheckout.sh - as indicated, it fetches the source code.
+* myMatlabBuildAll.sh - build all 6 of the currently required Matlab binaries.   Some paths probably
+  need to be updated for this to work properly
+* myMatlabSampleFdep - a sample run of "fdep" to calculate dependencies.  This needs
+  to be extended for all (6?) binaries (in a single concatenated output), and
+  then the output post-processed to a list of filenames.  This filename list can
+  then be used to determine whether any key files have changed, for example by
+  using a small Python script and the Unix "cmp -s" command.
+* samuellab-Matlab-Track-Analysis.tar.gz - a source code baseline.  This should be updated
+  in Subversion (either automatically or manually) at the same time that the Matlab
+  binaries are updated
+
+
+Note that the Matlab binaries themselves reside elsewhere in the Subversion tree, in:
+  ../settings/current.   If they are to be updated (either manually or automatically) at
+some point in the future, the updates must be performed in that directory, not here.
