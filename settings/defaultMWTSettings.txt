@@ -1,0 +1,15 @@
+frame_rate: 30
+thresholdToFillObject: 50
+thresholdToMarkObject: 25.6
+minObjectArea: 90
+minNewObjectArea: 100
+maxNewObjectArea: 750
+maxObjectArea: 750
+startFrame: 0
+endFrame: -1
+adpatationAlpha: 5
+dancerBorderSize: 10
+minFramesObjectMustPersist: 60
+updateBandNumber: 16
+windowOutputUpdateInterval: -1
+writeLog: false
